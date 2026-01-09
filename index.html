@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Gen Search Widget</title>
+
+  <!-- Widget JavaScript bundle -->
+  <script src="https://cloud.google.com/ai/gen-app-builder/client"></script>
+</head>
+<body>
+
+  <!-- Search widget -->
+  <gen-search-widget
+    configId="cda11425-0898-4db1-8cb3-ee3de16c4c3c"
+    triggerId="searchWidgetTrigger">
+  </gen-search-widget>
+
+  <!-- Trigger element -->
+  <input
+    type="text"
+    id="searchWidgetTrigger"
+    placeholder="Search here"
+    readonly
+    style="cursor:pointer;"
+  />
+
+</body>
+</html>
