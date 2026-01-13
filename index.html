@@ -2,27 +2,101 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Gen Search Widget</title>
+  <title>WhatsApp Style Chatbot</title>
 
-  <!-- Widget JavaScript bundle -->
+  <!-- Gen App Builder Widget -->
   <script src="https://cloud.google.com/ai/gen-app-builder/client"></script>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    /* WhatsApp floating button */
+    #waTrigger {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 62px;
+      height: 62px;
+      border-radius: 50%;
+      background-color: #25D366;
+      color: white;
+      font-size: 30px;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.35);
+      z-index: 9999;
+    }
+
+    /* Chat panel */
+    gen-search-widget {
+      position: fixed;
+      bottom: 95px;
+      right: 20px;
+      width: 360px;
+      height: 520px;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+      display: none;
+      z-index: 9999;
+      background: white;
+      animation: slideUp 0.25s ease-out;
+    }
+
+    /* Slide animation */
+    @keyframes slideUp {
+      from {
+        transform: translateY(40px);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    /* Mobile full screen */
+    @media (max-width: 480px) {
+      gen-search-widget {
+        width: 100%;
+        height: 100%;
+        right: 0;
+        bottom: 0;
+        border-radius: 0;
+      }
+
+      #waTrigger {
+        bottom: 15px;
+        right: 15px;
+      }
+    }
+  </style>
 </head>
 <body>
 
-  <!-- Search widget -->
+  <!-- Chatbot Widget -->
   <gen-search-widget
     configId="cda11425-0898-4db1-8cb3-ee3de16c4c3c"
-    triggerId="searchWidgetTrigger">
+    triggerId="waTrigger">
   </gen-search-widget>
 
-  <!-- Trigger element -->
-  <input
-    type="text"
-    id="searchWidgetTrigger"
-    placeholder="Search here"
-    readonly
-    style="cursor:pointer;"
-  />
+  <!-- WhatsApp Button -->
+  <button id="waTrigger">💬</button>
+
+  <script>
+    const trigger = document.getElementById("waTrigger");
+    const widget = document.querySelector("gen-search-widget");
+
+    trigger.addEventListener("click", () => {
+      widget.style.display =
+        widget.style.display === "none" || widget.style.display === ""
+          ? "block"
+          : "none";
+    });
+  </script>
 
 </body>
 </html>
